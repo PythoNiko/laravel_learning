@@ -1,9 +1,9 @@
 @extends('master_layout')
 
 @section('title')
-    About
+    Contact
 @endsection
 
 @section('content')
-    <h1>About</h1>
+    <h1>Contact</h1>
 @endsection
