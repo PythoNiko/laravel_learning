@@ -5,12 +5,5 @@
 @endsection
 
 @section('content')
-    <h1>My Laravel Project</h1>
-
-    <ul>
-        @foreach($tasks as $task)
-            <li>{{$task}}</li>
-        @endforeach
-    </ul>
-
+    <h1>My {{$title}} Project</h1>
 @endsection

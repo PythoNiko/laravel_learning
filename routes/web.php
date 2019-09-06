@@ -11,23 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    $tasks = [
-        'One',
-        'Two',
-        'Three',
-        'Four'
-    ];
+use Illuminate\Support\Facades\Route;
 
-    return view('welcome', [
-        'tasks' => $tasks
-    ]);
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/', 'PagesController@home');
+Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'PagesController@contact');
