@@ -25,11 +25,8 @@ class PagesController extends Controller{
 
     public function test(){
         return view('test', [
-            'title' => 'Test'
+            'title' => 'Test',
+            'name' => 'Niko'
         ]);
-    }
-
-    public function multiplier($numone, $numtwo){
-        return $numone * $numtwo;
     }
 }

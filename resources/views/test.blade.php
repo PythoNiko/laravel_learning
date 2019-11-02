@@ -9,6 +9,5 @@
 
     <p>This is my first test.</p>
 
-
-
+    <p>My name is {{$name}}</p>
 @endsection
