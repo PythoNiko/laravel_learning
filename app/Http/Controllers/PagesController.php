@@ -29,4 +29,8 @@ class PagesController extends Controller{
             'name' => 'Niko'
         ]);
     }
+
+    public static function multiplier($a, $b){
+        return $c = $a * $b;
+    }
 }
