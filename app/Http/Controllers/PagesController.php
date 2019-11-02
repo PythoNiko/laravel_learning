@@ -22,4 +22,14 @@ class PagesController extends Controller{
             'title' => 'Contact'
         ]);
     }
+
+    public function test(){
+        return view('test', [
+            'title' => 'Test'
+        ]);
+    }
+
+    public function multiplier($numone, $numtwo){
+        return $numone * $numtwo;
+    }
 }
