@@ -30,6 +30,13 @@ class PagesController extends Controller{
             'name' => 'Niko'
         ]);
     }
+    public function test2(){
+        return view('test2', [
+            'title' => 'Test 2',
+            'name' => 'Docho'
+        ]);
+    }
+
 
     public static function multiplier($a, $b){
         return $c = $a * $b;

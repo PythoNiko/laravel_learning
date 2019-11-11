@@ -14,6 +14,8 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/test">Test</a></li>
+        <li><a href="/testtwo">Test 2</a></li>
+        <li><a href="/tasks">Tasks</a></li>
     </ul>
     @yield('content')
 </body>

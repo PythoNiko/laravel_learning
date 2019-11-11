@@ -17,6 +17,9 @@ Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/test', 'PagesController@test');
+Route::get('/testtwo', 'PagesController@test');
+
+Route::get('/tasks', 'TasksController@index');
 
 /**
  * Display All Tasks
