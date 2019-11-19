@@ -8,7 +8,9 @@ use Illuminate\Support\Arr;
 class PagesController extends Controller{
     public function home(){
         return view('welcome', [
-            'title' => 'Laravel'
+            'title'         => 'Laravel',
+            'purpose'       => 'Testing Ground',
+            'projectTitle'  => 'Adminpanel to manage companies'
         ]);
     }
 
