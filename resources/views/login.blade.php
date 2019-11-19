@@ -1,7 +1,7 @@
 @extends('master_layout')
 
 @section('title')
-    About
+    Login
 @endsection
 
 @section('content')

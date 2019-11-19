@@ -14,6 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@home');
+Route::get('/home', 'HomeController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/test', 'PagesController@test');
@@ -64,3 +65,7 @@ Route::delete('/task/{id}', function ($id) {
     return redirect('/');
 });
  * */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
