@@ -20,12 +20,6 @@ class PagesController extends Controller{
         ]);
     }
 
-    public function contact(){
-        return view('contact', [
-            'title' => 'Contact'
-        ]);
-    }
-
     public function test(){
         return view('test', [
             'title' => 'Test',
