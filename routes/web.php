@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/test', 'PagesController@test');
 //Route::get('/testtwo', 'PagesController@test');
 //
-//Route::get('/tasks', 'TasksController@index');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/tasks', 'TasksController@index');
+Route::post('/tasks', 'TasksController@store');
+Route::get('/tasks/create', 'TasksController@create');

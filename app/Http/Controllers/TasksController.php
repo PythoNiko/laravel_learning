@@ -12,4 +12,18 @@ class TasksController extends Controller
 
         return view("tasks.index", compact('tasks'));
     }
+
+    public function create(){
+        return view("tasks.create");
+    }
+
+    public function store(){
+        $task = new Task();
+
+        $task->name = request('title');
+
+        $task->save();
+
+        return redirect('/tasks');
+    }
 }
