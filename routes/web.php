@@ -30,7 +30,6 @@ Route::get('/tasks', 'TasksController@index');
 Route::post('/tasks', 'TasksController@store');
 Route::get('/tasks/create', 'TasksController@create');
 
-Route::get('/tests', TestController::class.'@index');
+Route::get('/tests', 'TestController@index');
 Route::post('/tests', 'TestController@store');
-//Route::get('/tests', 'TestController@create');
 
