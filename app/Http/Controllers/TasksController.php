@@ -9,8 +9,10 @@ class TasksController extends Controller
 {
     public function index(){
         $tasks = Task::all();
-
-        return view("tasks.index", compact('tasks'));
+        $first_task = Task::all()->first()->id;
+        return view("tasks.index", compact(
+            'tasks',
+            'first_task'));
     }
 
     public function create(){

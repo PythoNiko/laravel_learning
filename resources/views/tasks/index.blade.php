@@ -10,4 +10,6 @@
         <li>{{ $task->id }}. {{ $task->name }} : {{ $task->description }}</li>
     @endforeach
 
+    <h3>{{ $first_task }}</h3>
+
 @endsection
