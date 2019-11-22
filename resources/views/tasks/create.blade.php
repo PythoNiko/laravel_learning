@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <button type="submit">Create Project</button>
+            <button type="submit">Create New Task</button>
         </div>
     </form>
 

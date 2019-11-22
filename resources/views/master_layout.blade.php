@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title', 'PythoNiko')</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
 </head>
 
 <body>
@@ -16,6 +17,10 @@
         <li><a href="/testtwo">Test 2</a></li>
         <li><a href="/tasks">Tasks</a></li>
     </ul>
-    @yield('content')
+
+    <div class="container">
+        @yield('content')
+    </div>
+
 </body>
 </html>

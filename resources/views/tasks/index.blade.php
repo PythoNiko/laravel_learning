@@ -7,7 +7,7 @@
 @section('content')
 
     @foreach($tasks as $task)
-        <li>{{ $task->name }}</li>
+        <li>{{ $task->id }}. {{ $task->name }} : {{ $task->description }}</li>
     @endforeach
 
 @endsection

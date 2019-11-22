@@ -26,10 +26,15 @@ Auth::routes();
 // Route::get('/', 'PagesController@home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/tasks', 'TasksController@index');
-Route::post('/tasks', 'TasksController@store');
-Route::get('/tasks/create', 'TasksController@create');
+//Route::get('/tests', 'TestController@index');
+//Route::post('/tests', 'TestController@store');
 
-Route::get('/tests', 'TestController@index');
-Route::post('/tests', 'TestController@store');
+Route::resource('tasks', 'TasksController');
+//Route::get('/tasks', 'TasksController@index');
+//Route::get('/tasks/create', 'TasksController@create');
+//Route::get('/tasks/{task}', 'TasksController@show');
+//Route::post('/tasks', 'TasksController@store');
+//Route::get('/tasks/{task}/edit', 'TasksController@edit');
+//Route::patch('/tasks/{task}', 'TasksController@update');
+//Route::delete('/tasks/{task}', 'TasksController@destroy');
 
