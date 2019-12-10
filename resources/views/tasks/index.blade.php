@@ -6,6 +6,11 @@
 
 @section('content')
 
+    <br>
+    <button type="button" onclick="window.location='{{ url("tasks/create") }}'">Create Task</button>
+
+    <br><br>
+
     @foreach($tasks as $task)
         <li>{{ $task->id }}. {{ $task->name }} : {{ $task->description }}</li>
     @endforeach
