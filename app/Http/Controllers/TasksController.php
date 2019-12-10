@@ -10,9 +10,14 @@ class TasksController extends Controller
     public function index(){
         $tasks = Task::all();
         $first_task = Task::all()->first()->id;
+        $last_task = Task::all()->last()->id;
+        $current_url = url()->current();
+
         return view("tasks.index", compact(
             'tasks',
-            'first_task'));
+            'first_task',
+                'last_task',
+                'current_url'));
     }
 
     public function create(){
