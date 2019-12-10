@@ -28,7 +28,7 @@ class HomeController extends Controller {
      */
     public function index()
     {
-        return view('welcome', [
+        return view('home', [
             'title'         => 'Laravel',
             'purpose'       => 'Testing Ground',
             'projectTitle'  => 'Adminpanel to manage companies'

@@ -13,8 +13,6 @@
     <ul>
         <li><a href="/login">Login</a></li>
         <li><a href="/home">Home</a></li>
-        <li><a href="/test">Test</a></li>
-        <li><a href="/testtwo">Test 2</a></li>
         <li><a href="/tasks">Tasks</a></li>
     </ul>
 

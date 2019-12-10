@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<!--
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -24,16 +25,20 @@
         </div>
     </div>
 </div>
+-->
 
 <h1>My {{$title}} Project</h1>
+<br>
 <h2> {{$purpose}} </h2>
 
-<a href="https://laraveldaily.com/test-junior-laravel-developer-sample-project/">Original Source</a>
-<p>We need to test basic Laravel skills, right? So the project should be simple, but at the same time touch majority of fundamentals.</p>
+<a href="https://laraveldaily.com/test-junior-laravel-developer-sample-project/">Original Source</a><br><br>
+<h3>We need to test basic Laravel skills, right? So the project should be simple, but at the same time touch majority of fundamentals.</h3><br>
 
 <h1>{{$projectTitle}}</h1>
 <p>Basically, project to manage companies and their employees. Mini-CRM.</p>
+<br>
 
+Todo:
 <ul>
     <li>Basic Laravel Auth: ability to log in as administrator &#9745;</li>
     <li>Use database seeds to create first user with email admin@admin.com and password “password” &#9745;</li>
