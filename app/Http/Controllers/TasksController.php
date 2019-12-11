@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
+    // Calls from db, and returns data to view
     public function index(){
         $tasks = Task::all();
         $first_task = Task::all()->first()->id;
@@ -24,6 +25,7 @@ class TasksController extends Controller
         return view("tasks.create");
     }
 
+    // Stores data into db
     public function store(){
         $task = new Task();
 

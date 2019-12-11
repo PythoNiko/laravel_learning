@@ -6,6 +6,7 @@
 
 @section('content')
 
+    <!-- Data coming from and handled by Tasks Controller -->
     <br>
     <button type="button" onclick="window.location='{{ url("tasks/create") }}'">Create Task</button>
 
