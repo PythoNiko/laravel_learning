@@ -17,8 +17,8 @@ class TasksController extends Controller
         return view("tasks.index", compact(
             'tasks',
             'first_task',
-                'last_task',
-                'current_url'));
+            'last_task',
+            'current_url'));
     }
 
     public function create(){
