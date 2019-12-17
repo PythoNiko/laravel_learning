@@ -21,4 +21,9 @@
     <h3>The last task ID is: {{ $last_task }}</h3>
     <br>
     <h3>Current URL: {{ $current_url }}</h3>
+
+    <?php
+        $num = -6;
+        echo abs($num);
+    ?>
 @endsection
