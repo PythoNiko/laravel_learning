@@ -7,6 +7,10 @@
 
     <title>@yield('title', 'PythoNiko')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="js/app.js"></script>
 </head>
 
 <body>
