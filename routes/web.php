@@ -25,7 +25,7 @@ Auth::routes();
 
 // Route::get('/', 'PagesController@home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/maps', 'MapsController@index');
+Route::get('/vue', 'VueController@index');
 //Route::get('/tests', 'TestController@index');
 //Route::post('/tests', 'TestController@store');
 

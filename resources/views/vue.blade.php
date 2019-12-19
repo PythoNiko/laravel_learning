@@ -1,7 +1,7 @@
 @extends('master_layout')
 
 @section('title')
-    Maps
+    Vue
 @endsection
 
 @section('content')

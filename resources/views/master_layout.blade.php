@@ -18,7 +18,7 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/home">Home</a></li>
         <li><a href="/tasks">Tasks</a></li>
-        <li><a href="/maps">Maps</a></li>
+        <li><a href="/vue">Vue</a></li>
     </ul>
 
     <div class="container">
