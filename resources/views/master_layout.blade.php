@@ -19,6 +19,7 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/tasks">Tasks</a></li>
         <li><a href="/vue">Vue</a></li>
+        <li><a href="/php">PHP</a></li>
     </ul>
 
     <div class="container">
