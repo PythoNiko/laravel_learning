@@ -39,3 +39,7 @@ Route::resource('tasks', 'TasksController');
 //Route::patch('/tasks/{task}', 'TasksController@update');
 //Route::delete('/tasks/{task}', 'TasksController@destroy');
 
+Route::get('session/get','SessionController@accessSessionData');
+Route::get('session/set','SessionController@storeSessionData');
+Route::get('session/remove','SessionController@deleteSessionData');
+

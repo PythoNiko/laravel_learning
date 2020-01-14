@@ -48,7 +48,7 @@
 
         echo $task->isComplete() . "<br><br>";
         echo $task->testString . "<br><br>";
-        echo $task->addFive(10);
+        echo $task->addFive(10) . "<br><br>";
     ?>
 
 @endsection
