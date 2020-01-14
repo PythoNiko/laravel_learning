@@ -8,6 +8,6 @@ Session Form
 
     <h1><b>Sessions</b></h1><br>
 
-    <p>Getting user's name from the session: {{$user_name}}</p>
+    <p>Getting user's name and workplace from the session: {{$user_name}} + {{$user_works}}</p>
 
 @endsection

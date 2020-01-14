@@ -22,15 +22,19 @@ class SessionController extends Controller {
         echo "Data has been removed from session.";
     }
     public function sessionHandler(Request $request) {
-        $request->session()->put('my_name', 'Niko');
+        $request->session()->put('name', 'Niko');
+        $request->session()->put('works', 'SilverBullet');
 
-        if($request->session()->has('my_name'))
-            $user_name = $request->session()->get('my_name');
-        else
+        if($request->session()->has('name') && $request->session()->has('works')){
+            $user_name = $request->session()->get('name');
+            $user_works = $request->session()->get('works');
+        } else{
             echo 'No data in the session';
+        }
 
         return view("/sessionForm", compact(
-            'user_name'
+            'user_name',
+            'user_works'
         ));
     }
 }
