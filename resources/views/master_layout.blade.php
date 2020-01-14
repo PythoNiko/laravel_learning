@@ -20,6 +20,7 @@
         <li><a href="/tasks">Tasks</a></li>
         <li><a href="/vue">Vue</a></li>
         <li><a href="/php">PHP</a></li>
+        <li><a href="/sessionForm">Sessions</a></li>
     </ul>
 
     <div class="container">

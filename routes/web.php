@@ -42,4 +42,5 @@ Route::resource('tasks', 'TasksController');
 Route::get('session/get','SessionController@accessSessionData');
 Route::get('session/set','SessionController@storeSessionData');
 Route::get('session/remove','SessionController@deleteSessionData');
+Route::get('sessionForm','SessionController@sessionHandler');
 
