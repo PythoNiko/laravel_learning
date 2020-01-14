@@ -26,7 +26,6 @@ class SessionController extends Controller {
 
         if($request->session()->has('my_name'))
             $user_name = $request->session()->get('my_name');
-//            echo $request->session()->get('my_name');
         else
             echo 'No data in the session';
 
