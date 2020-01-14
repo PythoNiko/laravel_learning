@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller {
     public function accessSessionData(Request $request) {
@@ -24,6 +25,9 @@ class SessionController extends Controller {
     public function sessionHandler(Request $request) {
         $request->session()->put('name', 'Niko');
         $request->session()->put('works', 'SilverBullet');
+
+        $all = Session::all(); // facade
+        $all = session()->all(); // Laravel Helpers
 
         if($request->session()->has('name') && $request->session()->has('works')){
             $user_name = $request->session()->get('name');
