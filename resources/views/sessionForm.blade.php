@@ -10,4 +10,6 @@ Session Form
 
     <p>Getting user's name and workplace from the session: {{$user_name}} + {{$user_works}}</p>
 
+    <p>Age: {{$age}}</p>
+
 @endsection
