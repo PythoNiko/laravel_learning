@@ -9,6 +9,8 @@
     <?php
         class Task{
 
+            public $testString = "This is to test object's public access...";
+            private $num = 5;
             protected $description;
             protected $completed = false;
 
@@ -24,6 +26,11 @@
             public function complete(){
                 $this->completed = true;
             }
+
+            public function addFive($secondNum){
+                $answer = $this->num + $secondNum;
+                return $answer;
+            }
         }
 
         // new task object
@@ -33,7 +40,15 @@
         $task->complete();
 
         // should return true(1)
-        echo $task->isComplete();
+        if($task->isComplete()){
+            echo "Task is complete";
+        } else{
+            echo "Task is not complete";
+        }
+
+        echo $task->isComplete() . "<br><br>";
+        echo $task->testString . "<br><br>";
+        echo $task->addFive(10);
     ?>
 
 @endsection
