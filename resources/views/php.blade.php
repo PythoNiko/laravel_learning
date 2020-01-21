@@ -1,5 +1,10 @@
 @extends('master_layout')
 
+{{--@php--}}
+{{--    require 'pv_test.json';--}}
+{{--    require 'pv_env.json';--}}
+{{--@endphp--}}
+
 @section('title')
     PHP Learning
 @endsection
@@ -127,5 +132,55 @@
         }
         echo "<br><br>";
 
+        #####################################################################################################
+
+                                                // PRICE & GO
+
+
+        echo "<h2><b>PRICE & GO</b></h2>";
+        $url = 'https://api.fastlanedms.com/priceandgo/api/vehiclevaluation';
+
+        $curl = curl_init();
+
+        $post_fields = file_get_contents(resource_path().'/views/'.'pv_test.json');
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.fastlanedms.com/PriceAndGo/api/VehicleCore/VehicleLookup",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $post_fields,
+            CURLOPT_HTTPHEADER => array(
+                "ContentType: application/json",
+                "Authorization: Basic V1k2RHZtUlBLRG50VUtrRVdSdEFVR2hXWldKcjVTejh1dnU5ZlFVNnZ6QXZNWEQ1OXU=",
+                "API_URL: https://api.fastlanedms.com/priceandgo/api/vehiclevaluation",
+                "API_KEY: 5LAszcuIrjBIirYoxoBkMkfhoGeVllru857$851678768+1.47",
+                "Content-Type: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        $info = curl_getinfo($curl);
+
+        curl_close($curl);
+
+        echo $response. "<br><br>";
+
+        echo $info["http_code"] . "<br><br>";
+
+        if($info["http_code"] != 200){
+            echo "Response Code: " . $info["http_code"] . ". Error!";
+            // add slack functionality here
+        } else {
+            echo "Response Code: " . $info["http_code"] . ". Success!";
+        }
+        echo "<br><br>";
+
     ?>
+
 @endsection
