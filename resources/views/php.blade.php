@@ -138,7 +138,6 @@
 
 
         echo "<h2><b>PRICE & GO</b></h2>";
-        $url = 'https://api.fastlanedms.com/priceandgo/api/vehiclevaluation';
 
         $curl = curl_init();
 
