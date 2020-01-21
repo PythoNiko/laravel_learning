@@ -31,6 +31,9 @@ Route::get('/php', 'PhpController@index');
 //Route::post('/tests', 'TestController@store');
 
 Route::resource('tasks', 'TasksController');
+Route::resource('sessions','SessionsController');
+
+
 //Route::get('/tasks', 'TasksController@index');
 //Route::get('/tasks/create', 'TasksController@create');
 //Route::get('/tasks/{task}', 'TasksController@show');
@@ -39,8 +42,5 @@ Route::resource('tasks', 'TasksController');
 //Route::patch('/tasks/{task}', 'TasksController@update');
 //Route::delete('/tasks/{task}', 'TasksController@destroy');
 
-Route::get('session/get','SessionController@accessSessionData');
-Route::get('session/set','SessionController@storeSessionData');
-Route::get('session/remove','SessionController@deleteSessionData');
-Route::get('sessionForm','SessionController@sessionHandler');
+
 
