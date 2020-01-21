@@ -24,6 +24,8 @@
     </ul>
 
     <div class="container">
+        <h1><b>@yield('heading', 'Generic Title')</b></h1>
+        <br>
         @yield('content')
     </div>
 

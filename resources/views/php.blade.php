@@ -4,8 +4,11 @@
     PHP Learning
 @endsection
 
-@section('content')
+@section('heading')
+    PHP Learning
+@endsection
 
+@section('content')
     <?php
         class Task{
 
@@ -51,4 +54,78 @@
         echo $task->addFive(10) . "<br><br>";
     ?>
 
+    <h1><b>API's</b></h1>
+    <?php
+        echo "<h2><b>GET</b></h2>";
+        ######################################
+        #                GET                 #
+        ######################################
+        $url = 'www.google.com';
+
+        //create a new cURL resource
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Execute cURL request with all previous settings
+        $response = curl_exec($ch);
+
+        $info = curl_getinfo($ch);
+
+        // Close cURL session
+        curl_close($ch);
+
+        echo $info["http_code"] . "<br>";
+
+        if($info["http_code"] == 200){
+            echo "Response Code: " . $info["http_code"] . ". Success!";
+        } else {
+            echo "Response Code: " . $info["http_code"] . ". Error!";
+        }
+        echo "<br><br>";
+
+        echo "<h2><b>POST</b></h2>";
+        ######################################
+        #               POST                 #
+        ######################################
+        $url = 'http://dummy.restapiexample.com/api/v1/create';
+
+        $post_data = array(
+            'name'  =>'New User 123',
+            'salary'=>'65000',
+            'age'   => '33'
+        );
+
+        //create a new cURL resource
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // Execute cURL request with all previous settings
+        $response = curl_exec($ch);
+
+        if($response === FALSE){
+            echo "CURL ERROR: " . curl_error($ch);
+        }
+
+        $info = curl_getinfo($ch);
+
+        // Close cURL session
+        curl_close($ch);
+
+        echo $info["http_code"] . "<br>";
+
+        if($info["http_code"] == 200){
+            echo "Response Code: " . $info["http_code"] . ". Success!";
+        } else {
+            echo "Response Code: " . $info["http_code"] . ". Error!";
+        }
+        echo "<br><br>";
+
+    ?>
 @endsection
