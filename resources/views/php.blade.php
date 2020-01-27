@@ -59,6 +59,8 @@
         echo $task->addFive(10) . "<br><br>";
     ?>
 
+    <p>Static keyword: {{$static_keyword}}</p><br>
+
     <h1><b>API's</b></h1>
     <?php
         echo "<h2><b>GET</b></h2>";

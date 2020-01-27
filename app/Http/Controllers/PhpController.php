@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class PhpController extends Controller
 {
     public function index(){
-        return view("php");
+
+        $static_keyword = "Any method declared as static is accessible without the creation of an object.";
+
+        return view("php",
+            compact('static_keyword'));
     }
 }
