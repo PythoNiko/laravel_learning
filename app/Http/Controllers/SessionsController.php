@@ -31,10 +31,10 @@ class SessionsController extends Controller {
             echo 'No data in the session';
         }
 
-        if ($request->input('testButton')) {
-            session()->forget('testString');
-            return redirect()->to(route('sessions.sessions'));
-        }
+//        if ($request->input('testButton')) {
+//            session()->forget('testString');
+//            return redirect()->to(route('sessions.sessions'));
+//        }
 
         // passing these session vals to the view
         return view("sessions.sessions", compact(
