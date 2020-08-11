@@ -1,6 +1,6 @@
 @extends('master_layout')
 
-@section('title')
+@section('heading')
     Tssks
 @endsection
 
