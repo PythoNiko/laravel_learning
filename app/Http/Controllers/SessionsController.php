@@ -27,7 +27,7 @@ class SessionsController extends Controller {
             $user_works = $request->session()->get('works');
             $age = Session::get('age');
             $testString = Session::get('testString');
-        } else{
+        } else {
             echo 'No data in the session';
         }
 

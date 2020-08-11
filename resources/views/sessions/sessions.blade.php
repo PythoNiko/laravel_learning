@@ -13,7 +13,7 @@ Session Form
     <p>Age: {{$age}}</p><br>
 
     <form>
-        <button id="testButton" action="{{route('sessions.sessions')}}" type="submit" value="1" name="testButton">Niko</button>
+        <button id="testButton" action="" type="submit" value="1" name="testButton">Niko</button>
     </form>
     <br>
     <label>
