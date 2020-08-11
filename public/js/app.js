@@ -44742,12 +44742,7 @@ new Vue({
     name: 'Niko',
     add: 5 + 3
   }
-}); // Vue.component('hello-world-component', {
-//         el: '#app',
-//         data: {
-//             message: 'Hello Vue!'
-//         }
-// });
+});
 
 /***/ }),
 
@@ -44768,8 +44763,6 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-  __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'resources/js/bootstrap'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -44814,8 +44807,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/laravel_learning/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/laravel_learning/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\nick.connell\PhpstormProjects\laravel_learning\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\nick.connell\PhpstormProjects\laravel_learning\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

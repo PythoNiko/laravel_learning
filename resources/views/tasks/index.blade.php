@@ -1,29 +1,36 @@
 @extends('master_layout')
 
-@section('heading')
-    Tssks
+@section('title')
+    | Tasks
 @endsection
 
 @section('content')
-
-    <!-- Data coming from and handled by Tasks Controller -->
-    <br>
-    <button type="button" onclick="window.location='{{ url("tasks/create") }}'">Create Task</button>
-
-    <br><br>
-
-    @foreach($tasks as $task)
-        <li>{{ $task->id }}. {{ $task->name }} : {{ $task->description }}</li>
-    @endforeach
-
-    <br>
-    <h3>The first task ID is: {{ $first_task }}</h3>
-    <h3>The last task ID is: {{ $last_task }}</h3>
-    <br>
-    <h3>Current URL: {{ $current_url }}</h3>
-
-    <?php
-        $num = -6;
-        echo abs($num);
-    ?>
+    <div class="container bg-white shadow">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-style-none">
+                    @foreach($tasks as $task)
+                        <li>{{ $task->id }}. {{ $task->name }} : {{ $task->description }}</li>
+                    @endforeach
+                </ul>
+                <p><a href="{{route('tasks.create')}}" class="btn btn-large btn-primary">Create Task</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <p>The first task ID is: {{ $first_task }}</p>
+                <p>The last task ID is: {{ $last_task }}</p>
+                <p>Current URL: {{ $current_url }}</p>
+                <p>Plucked example: {{ $plucked_tasks }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, eaque excepturi ipsum labore nostrum obcaecati porro praesentium quia reiciendis voluptate. Consequatur distinctio ex fuga laudantium nam quisquam repellat similique voluptatum!
+            </div>
+            <div class="col-md-6">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam amet dicta minima mollitia necessitatibus, nesciunt quaerat, reprehenderit sapiente ullam veritatis voluptatibus. Est eveniet necessitatibus qui quisquam sed temporibus vel.
+            </div>
+        </div>
+    </div>
 @endsection

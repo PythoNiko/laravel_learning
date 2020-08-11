@@ -9,11 +9,4 @@ new Vue({
         name: 'Niko',
         add: 5 + 3
     }
-})
-
-// Vue.component('hello-world-component', {
-//         el: '#app',
-//         data: {
-//             message: 'Hello Vue!'
-//         }
-// });
+});

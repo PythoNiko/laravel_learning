@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/', 'PagesController@home');
+ Route::get('/', function() {
+     return '';
+ })->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vue', 'VueController@index');
 Route::get('/php', 'PhpController@index');
 
 Route::resource('tasks', 'TasksController');
 Route::resource('sessions','SessionsController');
-

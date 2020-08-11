@@ -1,12 +1,10 @@
 @extends('master_layout')
 
-@section('title')
+@section('geading')
     Create Tasks
 @endsection
 
 @section('content')
-
-    <h2>Create Task</h2>
 
     <form method="POST" action="/tasks">
         {{ csrf_field() }}

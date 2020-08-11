@@ -14,11 +14,15 @@ class TasksController extends Controller
         $last_task = Task::all()->last()->id;
         $current_url = url()->current();
 
+        // The pluck method retrieves all of the values for a given key:
+        $plucked_tasks = $tasks->pluck('name');
+
         return view("tasks.index", compact(
             'tasks',
             'first_task',
             'last_task',
-            'current_url'));
+            'current_url',
+            'plucked_tasks'));
     }
 
     public function create(){
@@ -28,7 +32,6 @@ class TasksController extends Controller
     // Stores data into db
     public function store(){
         $task = new Task();
-
         $task->name = request('title');
         $task->description = request('description');
 

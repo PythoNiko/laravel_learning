@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
 <head>
-
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>@yield('title', 'PythoNiko')</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <title>{{config('app.name')}} @yield('title')</title>
 </head>
-
 <body>
-    <ul>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/home">Home</a></li>
-        <li><a href="/tasks">Tasks</a></li>
-        <li><a href="/vue">Vue</a></li>
-        <li><a href="/php">PHP</a></li>
-        <li><a href="/sessions">Sessions</a></li>
-    </ul>
 
-    <div class="container">
-        <h1><b>@yield('heading', 'Generic Title')</b></h1>
-        <br>
-        @yield('content')
-    </div>
+    @include('layouts.nav')
+    @yield('content')
 
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
