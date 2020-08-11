@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <form method="POST" action="/tasks">
+    <form method="POST" {{route('tasks.store')}}>
         {{ csrf_field() }}
 
         <div>
