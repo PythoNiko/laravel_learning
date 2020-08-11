@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item {{Request::is('') ? 'active' : null}}">
-                <a class="nav-link" href="{{route('index')}}">Home</a>
+                <a class="nav-link" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item {{Request::is('tasks*') ? 'active' : null}}">
                 <a class="nav-link" href="{{route('tasks.index')}}">Tasks</a>
