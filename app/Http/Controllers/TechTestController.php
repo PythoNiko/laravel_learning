@@ -14,7 +14,31 @@ class TechTestController extends Controller
      */
     public function index()
     {
-        return view('techtest.index');
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://trialapi.craig.mtcdevserver.com/",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_POST => 1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => '{key=3NLTTNlXsi6rBWl7nYGluOdkl2htFHu}',
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json"
+            )
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $response = json_decode($response, true);
+
+        return view('techtest.index', compact(
+            'response'
+        ));
     }
 
     /**
