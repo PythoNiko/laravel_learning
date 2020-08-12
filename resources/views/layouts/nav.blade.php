@@ -15,6 +15,9 @@
             <li class="nav-item {{Request::is('sessions*') ? 'active' : null}}">
                 <a class="nav-link" href="{{route('sessions.index')}}">Sessions</a>
             </li>
+            <li class="nav-item {{Request::is('techtest*') ? 'active' : null}}">
+                <a class="nav-link" href="{{route('techtest.index')}}">Tech Test</a>
+            </li>
         </ul>
     </div>
 </nav>
