@@ -16,15 +16,19 @@ class TechTestController extends Controller
     {
         $curl = curl_init();
 
+        // ToDo: - Store securely
+        $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
+        $apiKey = '3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
+
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://trialapi.craig.mtcdevserver.com/",
+            CURLOPT_URL => $endPoint . '?api_key=' . $apiKey,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_POST => 1,
             CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_POSTFIELDS => '{key=3NLTTNlXsi6rBWl7nYGluOdkl2htFHu}',
+            CURLOPT_POSTFIELDS => "",
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json"
             )

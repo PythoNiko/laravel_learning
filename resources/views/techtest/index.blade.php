@@ -11,7 +11,7 @@
 
     <div>
         <?php
-            var_dump($response);
+            dump($response);
         ?>
     </div>
 @endsection
