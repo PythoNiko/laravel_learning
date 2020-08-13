@@ -8,10 +8,4 @@
     <div class="col-md-12">
         <h1>Tech Test</h1>
     </div>
-
-    <div>
-        <?php
-            dump($response);
-        ?>
-    </div>
 @endsection

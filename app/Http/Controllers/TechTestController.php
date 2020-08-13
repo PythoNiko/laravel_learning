@@ -40,9 +40,9 @@ class TechTestController extends Controller
 
         $response = json_decode($response, true);
 
-        return view('techtest.index', compact(
-            'response'
-        ));
+        dump($response);
+
+        return view('techtest.index');
     }
 
     /**
