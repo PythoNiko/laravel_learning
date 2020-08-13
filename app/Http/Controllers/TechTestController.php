@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\TechTest;
+use App\Property;
 use Illuminate\Http\Request;
 
 class TechTestController extends Controller
@@ -14,6 +14,15 @@ class TechTestController extends Controller
      */
     public function index()
     {
+        $property = new Property();
+
+        $property->fill([
+            'county' => 'niko',
+            'country' => 'gb'
+        ]);
+
+        $property->save();
+
         $curl = curl_init();
 
         // ToDo: - Store securely
@@ -40,9 +49,11 @@ class TechTestController extends Controller
 
         $response = json_decode($response, true);
 
-        dump($response);
+//        dump($response['data']);
 
-        return view('techtest.index');
+        return view('techtest.index', compact(
+            'response'
+        ));
     }
 
     /**
