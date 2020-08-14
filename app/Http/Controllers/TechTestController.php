@@ -16,9 +16,24 @@ class TechTestController extends Controller
     {
         $property = new Property();
 
+        // test to fill dm column - works fine
+        // TODO: next build form and marry up
         $property->fill([
-            'county' => 'niko',
-            'country' => 'gb'
+            'county' => 'test',
+            'country' => 'test',
+            'town' => 'test',
+            'description' => 'test',
+            'full_details_url' => 'test',
+            'displayable_address' => 'test',
+            'image_url' => 'test',
+            'thumbnail_url' => 'test',
+            'latitude' => 'test',
+            'longtitude' => 'test',
+            'num_of_bedrooms' => 5,
+            'num_of_bathrooms' => 5,
+            'price' => 200.50,
+            'property_type' => 'test',
+            'for_sale_rent' => 'test'
         ]);
 
         $property->save();
