@@ -11,17 +11,17 @@
 
     <div class="card mb-40">
         <div class="cardBody">
-            <h3>Proprties</h3>
+            <h3>Properties</h3>
             <table>
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Unit</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Start Date</th>
-                    <th>Expiry Date</th>
+                    <th>County</th>
+                    <th>Town</th>
+                    <th>Property Type</th>
+                    <th>Sale/Rent</th>
+                    <th>Number of Bedrooms</th>
+                    <th>Number of Bathrooms</th>
+                    <th>Price</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -65,6 +65,9 @@
                     </tr>
                 @endif
             </table>
+            {{-- Requirements state no Auth is required here.
+                 If this was to change could easily create permissions and do simple check
+                 can('edit/add new property')....--}}
             <a href="#" class="button noMarginBottom">
                 Add New Property
             </a>
