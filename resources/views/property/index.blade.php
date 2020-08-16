@@ -9,8 +9,8 @@
 
     <div class="container bg-white shadow">
         <div class="row">
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">County</th>
                         <th scope="col">Town</th>
