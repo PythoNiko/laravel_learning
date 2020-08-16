@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helpers;
 use App\Property;
 use Illuminate\Http\Request;
 
-class TechTestController extends Controller
+class PropertyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -66,7 +67,7 @@ class TechTestController extends Controller
 
 //        dump($response['data']);
 
-        return view('techtest.index', compact(
+        return view('property.index', compact(
             'response',
             'property'
         ));
@@ -79,7 +80,7 @@ class TechTestController extends Controller
      */
     public function create()
     {
-        return view("techtest.create");
+        return view("property.create");
     }
 
     /**
@@ -109,16 +110,16 @@ class TechTestController extends Controller
 
         $property->save();
 
-        return redirect('/techtest');
+        return redirect('/property');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\TechTest  $techTest
+     * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function show(TechTest $techTest)
+    public function show(Property $property)
     {
         //
     }
@@ -126,34 +127,62 @@ class TechTestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TechTest  $techTest
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(TechTest $techTest)
+    public function edit($id)
     {
-        //
+        $property = Property::where('id', '=', $id);
+
+        return view("property.edit", compact("property"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TechTest  $techTest
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Property $property
+     * @return void
      */
-    public function update(Request $request, TechTest $techTest)
+    public function update(Request $request, Property $property)
     {
-        //
+        $rules = [
+            'county'                => 'required',
+            'country'               => 'required',
+            'town'                  => 'required',
+            'description'           => 'required',
+            'full_details_url'      => 'required',
+            'displayable_address'   => 'required',
+            'image_url'             => 'required',
+            'thumbnail_url'         => 'required',
+            'latitude'              => 'required',
+            'longtitude'            => 'required',
+            'num_of_bedrooms'       => 'required',
+            'num_of_bathrooms'      => 'required',
+            'price'                 => 'required',
+            'property_type'         => 'required',
+            'for_sale_rent'         => 'required'
+        ];
+
+        $propertyData = Helpers::validateForm($request, $rules);
+
+        $property->fill($propertyData);
+
+        $property->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TechTest  $techTest
-     * @return \Illuminate\Http\Response
+     * @param Property $property
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function destroy(TechTest $techTest)
+    public function destroy($id)
     {
-        //
+        $property = Property::where('id', '=', $id)->firstOrFail();;
+
+        $property->delete();
+
+        return view('property.index');
     }
 }

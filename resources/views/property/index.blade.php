@@ -49,12 +49,12 @@
                                 &pound;{{ number_format($properties->price) }}
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="{{route('property.edit', $properties->id)}}">
                                     Edit
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="{{route('property.destroy', $properties->id)}}">
                                     Delete
                                 </a>
                             </td>
@@ -73,7 +73,7 @@
                  can('edit/add new property')....--}}
 
         </div>
-        <a href="{{route('techtest.create')}}" class="button noMarginBottom">
+        <a href="{{route('property.create')}}" class="button noMarginBottom">
             Add New Property
         </a>
     </div>

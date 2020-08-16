@@ -8,7 +8,7 @@
     <div class="container bg-white shadow">
         <div class="row">
             {{-- ToDo: Validation and error handling --}}
-            <form method="POST" action="{{route('techtest.store')}}">
+            <form method="POST" action="{{route('property.store')}}">
                 {{ csrf_field() }}
 
                 <div class="field">

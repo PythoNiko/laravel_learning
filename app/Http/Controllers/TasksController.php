@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
+use App\Property;
 use App\Task;
 use Illuminate\Http\Request;
 
@@ -51,7 +53,7 @@ class TasksController extends Controller
         return view("tasks.edit", compact("tasks"));
     }
 
-    public function update(){
+    public function update(Request $request, Property $property){
         // code here
     }
 

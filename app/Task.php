@@ -12,4 +12,8 @@ class Task extends Model
      * @var string
      */
     protected $table = 'tasks';
+
+    public static function find($id)
+    {
+    }
 }

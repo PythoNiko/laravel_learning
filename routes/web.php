@@ -26,4 +26,4 @@ Route::get('/php', 'PhpController@index');
 
 Route::resource('tasks', 'TasksController');
 Route::resource('sessions','SessionsController');
-Route::resource('techtest','TechTestController');
+Route::resource('property','PropertyController');
