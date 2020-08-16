@@ -11,8 +11,8 @@
 
     <div class="card mb-40">
         <div class="cardBody">
-            <h3>Proeprties</h3>
-            <table v-pre class="tableLayoutAuto">
+            <h3>Proprties</h3>
+            <table>
                 <thead>
                 <tr>
                     <th>Name</th>
