@@ -29,7 +29,7 @@ class CreatePropertiesTable extends Migration
             $table->decimal('longtitude', 10, 7)->nullable();
             $table->tinyInteger('num_of_bedrooms');
             $table->tinyInteger('num_of_bathrooms');
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 10, 2);
             $table->string('property_type');
             $table->string('for_sale_rent');
             $table->timestamps();

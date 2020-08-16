@@ -37,7 +37,7 @@
                                 {{ $properties->property_type }}
                             </td>
                             <td>
-                                {{ $properties->for_sale_rent }}
+                                {{ ucfirst($properties->for_sale_rent) }}
                             </td>
                             <td>
                                 {{ $properties->num_of_bedrooms }}
