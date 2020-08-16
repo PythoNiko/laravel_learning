@@ -25,29 +25,29 @@
                     <th></th>
                 </tr>
                 </thead>
-                @if ($response)
-                    @foreach ($response as $property)
+                @if ($property)
+                    @foreach ($property as $properties)
                         <tr>
                             <td>
-                                Test1
+                                {{ $properties->county }}
                             </td>
                             <td>
-                                Test1
+                                {{ $properties->town }}
                             </td>
                             <td>
-                                Test1
+                                {{ $properties->property_type }}
                             </td>
                             <td>
-                                Test1
+                                {{ $properties->for_sale_rent }}
                             </td>
                             <td>
-                                Test1
+                                {{ $properties->num_of_bedrooms }}
                             </td>
                             <td>
-                                Test1
+                                {{ $properties->num_of_bathrooms }}
                             </td>
                             <td>
-                                Test1
+                                &pound;{{ number_format($properties->price) }}
                             </td>
                             <td>
                                 <a href="#">
