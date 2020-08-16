@@ -18,58 +18,7 @@ class PropertyController extends Controller
     {
         $property = Property::all();
 
-//        // test to fill dm column - works fine
-//        // TODO: next build form and marry up
-//        $property->fill([
-//            'county' => 'test',
-//            'country' => 'test',
-//            'town' => 'test',
-//            'description' => 'test',
-//            'full_details_url' => 'test',
-//            'displayable_address' => 'test',
-//            'image_url' => 'test',
-//            'thumbnail_url' => 'test',
-//            'latitude' => 'test',
-//            'longtitude' => 'test',
-//            'num_of_bedrooms' => 5,
-//            'num_of_bathrooms' => 5,
-//            'price' => 200.50,
-//            'property_type' => 'test',
-//            'for_sale_rent' => 'test'
-//        ]);
-//
-//        $property->save();
-
-        $curl = curl_init();
-
-        // ToDo: - Store securely
-        $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
-        $apiKey = '3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $endPoint . '?api_key=' . $apiKey,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_POST => 1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_POSTFIELDS => "",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json"
-            )
-        ));
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-
-        $response = json_decode($response, true);
-
-//        dump($response['data']);
-
         return view('property.index', compact(
-            'response',
             'property'
         ));
     }
@@ -112,6 +61,73 @@ class PropertyController extends Controller
         $property->save();
 
         return redirect('/property');
+    }
+
+    public function populatePropertiesFromAPI(){
+        /*
+         * ToDo:
+         *      - Check if uuid already exists
+         *      - if not: populate from below
+         *      - else: skip
+         */
+
+        $curl = curl_init();
+
+        // ToDo: - Store securely
+        $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
+        $apiKey = '3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $endPoint . '?api_key=' . $apiKey,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_POST => 1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json"
+            )
+        ));
+
+        $response = curl_exec($curl);
+
+        $response_status = curl_getinfo($curl);
+
+        curl_close($curl);
+
+        if($response_status['http_code']){
+            $response = json_decode($response, true);
+
+            $property = new Property();
+
+            foreach($response['data'] as $property_data){
+                // dd($property_data);
+
+                $property = new Property();
+
+                $property->uuid = $property_data['uuid'];
+                $property->county = $property_data['county'];
+                $property->country = $property_data['country'];
+                $property->town = $property_data['town'];
+                $property->description = $property_data['description'];
+                $property->full_details_url = '?';
+                $property->displayable_address = $property_data['address'];
+                $property->image_url = $property_data['image_full'];
+                $property->thumbnail_url = $property_data['image_thumbnail'];
+                $property->latitude = $property_data['latitude'];
+                $property->longtitude = $property_data['longitude'];
+                $property->num_of_bedrooms = $property_data['num_bedrooms'];
+                $property->num_of_bathrooms = $property_data['num_bathrooms'];
+                $property->property_type = $property_data['property_type']['title'];
+                $property->for_sale_rent = $property_data['type'];
+
+                $property->save();
+            }
+        }
+
+        return $property;
     }
 
     /**

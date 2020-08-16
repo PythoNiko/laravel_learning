@@ -16,6 +16,7 @@ class CreatePropertiesTable extends Migration
         // ToDo: Validation and error handling
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('uuid');
             $table->string('county');
             $table->string('country');
             $table->string('town');
