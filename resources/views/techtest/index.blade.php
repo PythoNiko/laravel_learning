@@ -5,13 +5,10 @@
 @endsection
 
 @section('content')
-    <div class="col-md-12">
-        <h1>Tech Test</h1>
-    </div>
+    <h3>Properties</h3>
 
-    <div class="card mb-40">
-        <div class="cardBody">
-            <h3>Properties</h3>
+    <div class="container bg-white shadow">
+        <div class="row">
             <table>
                 <thead>
                 <tr>
@@ -22,6 +19,7 @@
                     <th>Number of Bedrooms</th>
                     <th>Number of Bathrooms</th>
                     <th>Price</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -51,10 +49,14 @@
                                 &pound;{{ number_format($properties->price) }}
                             </td>
                             <td>
-{{--                                <a href="{{route('techtest.edit', $properties->id)}}">--}}
-{{--                                    <i class="fal fa-edit"></i>--}}
-{{--                                    Edit--}}
-{{--                                </a>--}}
+                                <a href="#">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    Delete
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -69,10 +71,11 @@
             {{-- Requirements state no Auth is required here.
                  If this was to change could easily create permissions and do simple check
                  can('edit/add new property')....--}}
-            <a href="{{route('techtest.create')}}" class="button noMarginBottom">
-                Add New Property
-            </a>
+
         </div>
+        <a href="{{route('techtest.create')}}" class="button noMarginBottom">
+            Add New Property
+        </a>
     </div>
 
 {{--    <?php--}}
