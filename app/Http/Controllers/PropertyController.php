@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helpers;
 use App\Property;
 use Illuminate\Http\Request;
+use Throwable;
 
 class PropertyController extends Controller
 {
@@ -153,8 +154,8 @@ class PropertyController extends Controller
             'description'           => 'required',
             'full_details_url'      => 'required',
             'displayable_address'   => 'required',
-            'image_url'             => 'required',
-            'thumbnail_url'         => 'required',
+            'image_url'             => 'file',
+            'thumbnail_url'         => 'file',
             'latitude'              => 'required',
             'longtitude'            => 'required',
             'num_of_bedrooms'       => 'required',
@@ -175,14 +176,20 @@ class PropertyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Property $property
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return false|string
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $property = Property::where('id', '=', $id)->firstOrFail();;
+        $property = Property::find($request->id);
 
-        $property->delete();
-
-        return view('property.index');
+        try {
+            if ($property->delete()) {
+                return json_encode(['success' => 'Property successfully deleted']);
+            } else {
+                return json_encode(['error' => 'Property failed to delete']);
+            }
+        } catch (Throwable $e) {
+            return json_encode(['error' => $e->getMessage()]);
+        }
     }
 }

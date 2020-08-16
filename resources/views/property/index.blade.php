@@ -1,7 +1,7 @@
 @extends('master_layout')
 
 @section('title')
-    | Tech Test
+    | Properties
 @endsection
 
 @section('content')
@@ -9,19 +9,19 @@
 
     <div class="container bg-white shadow">
         <div class="row">
-            <table>
+            <table class="table">
                 <thead>
-                <tr>
-                    <th>County</th>
-                    <th>Town</th>
-                    <th>Property Type</th>
-                    <th>Sale/Rent</th>
-                    <th>Number of Bedrooms</th>
-                    <th>Number of Bathrooms</th>
-                    <th>Price</th>
-                    <th></th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        <th scope="col">County</th>
+                        <th scope="col">Town</th>
+                        <th scope="col">Property Type</th>
+                        <th scope="col">Sale/Rent</th>
+                        <th scope="col">Number of Bedrooms</th>
+                        <th scope="col">Number of Bathrooms</th>
+                        <th scope="col">Price</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
                 </thead>
                 {{-- ToDo: Validation and error handling --}}
                 @if ($property)

@@ -1,7 +1,7 @@
 @extends('master_layout')
 
 @section('title')
-    | Tech Test
+    | Edit Property
 @endsection
 
 @section('content')

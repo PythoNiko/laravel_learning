@@ -99,7 +99,7 @@
                     <label class="label" for="price">Price</label>
 
                     <div class="control">
-                        <input type="text" class="input" name="price" placeholder="Price">
+                        <input type="number" class="input" name="price" placeholder="Price">
                     </div>
                 </div>
                 <div class="field">
