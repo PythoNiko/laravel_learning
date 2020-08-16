@@ -25,6 +25,7 @@
                     <th></th>
                 </tr>
                 </thead>
+                {{-- ToDo: Validation and error handling --}}
                 @if ($property)
                     @foreach ($property as $properties)
                         <tr>
@@ -50,10 +51,10 @@
                                 &pound;{{ number_format($properties->price) }}
                             </td>
                             <td>
-                                <a href="#">
-                                    <i class="fal fa-edit"></i>
-                                    Edit
-                                </a>
+{{--                                <a href="{{route('techtest.edit', $properties->id)}}">--}}
+{{--                                    <i class="fal fa-edit"></i>--}}
+{{--                                    Edit--}}
+{{--                                </a>--}}
                             </td>
                         </tr>
                     @endforeach
@@ -68,7 +69,7 @@
             {{-- Requirements state no Auth is required here.
                  If this was to change could easily create permissions and do simple check
                  can('edit/add new property')....--}}
-            <a href="#" class="button noMarginBottom">
+            <a href="{{route('techtest.create')}}" class="button noMarginBottom">
                 Add New Property
             </a>
         </div>

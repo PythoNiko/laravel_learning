@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTechTestsTable extends Migration
+class CreatePropertiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,7 @@ class CreateTechTestsTable extends Migration
      */
     public function up()
     {
+        // ToDo: Validation and error handling
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('county');
@@ -21,10 +22,10 @@ class CreateTechTestsTable extends Migration
             $table->string('description');
             $table->string('full_details_url');
             $table->string('displayable_address');
-            $table->string('image_url');
-            $table->string('thumbnail_url');
-            $table->decimal('latitude', 10, 7);
-            $table->decimal('longtitude', 10, 7);
+            $table->string('image_url')->nullable();
+            $table->string('thumbnail_url')->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longtitude', 10, 7)->nullable();
             $table->tinyInteger('num_of_bedrooms');
             $table->tinyInteger('num_of_bathrooms');
             $table->decimal('price', 8, 2);

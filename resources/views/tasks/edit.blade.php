@@ -6,7 +6,7 @@
 
     <form>
         <div class="field">
-            <label class="label" for="title"Title</label>
+            <label class="label" for="title">Title</label>
 
             <div class="control">
                 <input type="text" class="input" name="title" placeholder="Title" value="{{ $tasks->name }}">

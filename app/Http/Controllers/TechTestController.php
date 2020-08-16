@@ -75,22 +75,41 @@ class TechTestController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view("techtest.create");
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $property = new Property();
+
+        $property->county = request('county');
+        $property->country = request('country');
+        $property->town = request('town');
+        $property->description = request('description');
+        $property->full_details_url = request('full_details_url');
+        $property->displayable_address = request('displayable_address');
+        $property->image_url = request('image_url');
+        $property->thumbnail_url = request('thumbnail_url');
+        $property->latitude = request('latitude');
+        $property->longtitude = request('longtitude');
+        $property->num_of_bedrooms = request('num_of_bedrooms');
+        $property->num_of_bathrooms = request('num_of_bathrooms');
+        $property->property_type = request('property_type');
+        $property->for_sale_rent = request('sale_rent');
+
+        $property->save();
+
+        return redirect('/techtest');
     }
 
     /**
