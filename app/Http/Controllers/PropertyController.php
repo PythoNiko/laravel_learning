@@ -66,9 +66,14 @@ class PropertyController extends Controller
     public function populatePropertiesFromAPI(){
         /*
          * ToDo:
-         *      - Check if uuid already exists
+         *      1. Check if uuid already exists
          *      - if not: populate from below
          *      - else: skip
+         *      2. Get last page number from /last_page_url
+         *      - While page number < last page number
+         *      - grab data from each, mark page as read
+         *      - call API and append /next_page_url with increments to capture each page number
+         *      - when all data complete, stop.
          */
 
         $curl = curl_init();
