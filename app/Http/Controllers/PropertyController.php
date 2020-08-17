@@ -50,8 +50,6 @@ class PropertyController extends Controller
             'description'           => 'required',
             'full_details_url'      => 'required',
             'displayable_address'   => 'required',
-//            'image_url'             => 'file',
-//            'thumbnail_url'         => 'file',
             'latitude'              => 'required',
             'longtitude'            => 'required',
             'num_of_bedrooms'       => 'required',
@@ -86,7 +84,6 @@ class PropertyController extends Controller
         } else {
             return back()->withInput();
         }
-
     }
 
     public function validateForm(Request $request, Property $property){
