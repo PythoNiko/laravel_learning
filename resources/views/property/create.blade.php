@@ -77,14 +77,14 @@
                         <label class="label" for="image_url">Upload Image</label>
 
                         <div class="form-group">
-                            <input type="file" class="input" name="image_url">
+                            <input type="text" class="input form-control" name="image_url" placeholder="Image URL" value="{{old('image_url')}}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="label" for="thumbnail_url">Thumbnail Image</label>
 
                         <div class="form-group">
-                            <input type="file" class="input" name="thumbnail_url">
+                            <input type="text" class="input form-control" name="thumbnail_url" placeholder="Thumbnail URL" value="{{old('thumbnail_url')}}">
                         </div>
                     </div>
                     <div class="form-group">
