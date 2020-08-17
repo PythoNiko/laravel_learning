@@ -29,7 +29,11 @@
                     @foreach ($property as $properties)
                         <tr>
                             <td>
-                                <img src="{{ $properties->thumbnail_url }}" class="css-class" alt="alt text">
+                                @if($properties->thumbnail_url)
+                                    <img src="{{ $properties->thumbnail_url }}" class="css-class" alt="property_image">
+                                @else
+                                    <img src="https://lh3.googleusercontent.com/proxy/tEaBkUcigm-pg7O4KnqU-nKhL4YdiFxPyfgW-aNdWaTuyK2LwAWHlUlc3Ex6X1zEx8syyZ1rftzU6uPRsBs7S3DkDtlnA16YNSlMeMJ2BJLt4E7YFmGvaA" class="css-class" alt="image_not_found">
+                                @endif
                             </td>
                             <td>
                                 {{ $properties->county }}
