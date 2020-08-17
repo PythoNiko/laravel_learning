@@ -32,9 +32,9 @@
 <h2> {{$purpose}} </h2>
 
 <a href="https://laraveldaily.com/test-junior-laravel-developer-sample-project/">Original Source</a><br><br>
-<h3>We need to test basic Laravel skills, right? So the project should be simple, but at the same time touch majority of fundamentals.</h3><br>
+<p>We need to test basic Laravel skills, right? So the project should be simple, but at the same time touch majority of fundamentals.</p><br>
 
-<h1>{{$projectTitle}}</h1>
+<h4>{{$projectTitle}}</h4>
 <p>Basically, project to manage companies and their employees. Mini-CRM.</p>
 <br>
 
