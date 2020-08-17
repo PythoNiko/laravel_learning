@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helpers;
 use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Throwable;
 
 class PropertyController extends Controller
@@ -36,13 +37,35 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Property $property
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request, Property $property)
     {
+        $rules = [
+            'county'                => 'required',
+            'country'               => 'required',
+            'town'                  => 'required',
+            'description'           => 'required',
+            'full_details_url'      => 'required',
+            'displayable_address'   => 'required',
+//            'image_url'             => 'file',
+//            'thumbnail_url'         => 'file',
+            'latitude'              => 'required',
+            'longtitude'            => 'required',
+            'num_of_bedrooms'       => 'required',
+            'num_of_bathrooms'      => 'required',
+            'price'                 => 'required',
+            'property_type'         => 'required',
+            'sale_rent'             => 'required'
+        ];
+
+        $request->validate($rules);
+
         $property = new Property();
 
+        $property->uuid = Str::uuid();
         $property->county = request('county');
         $property->country = request('country');
         $property->town = request('town');
@@ -58,9 +81,18 @@ class PropertyController extends Controller
         $property->property_type = request('property_type');
         $property->for_sale_rent = request('sale_rent');
 
-        $property->save();
+        if ($property->save()) {
+            return redirect('/property')->with('success', 'Property saved successfully');
+        } else {
+            return back()->withInput();
+        }
 
-        return redirect('/property');
+    }
+
+    public function validateForm(Request $request, Property $property){
+
+        return view('property.index');
+
     }
 
     public function populatePropertiesFromAPI(){
@@ -168,29 +200,7 @@ class PropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-        $rules = [
-            'county'                => 'required',
-            'country'               => 'required',
-            'town'                  => 'required',
-            'description'           => 'required',
-            'full_details_url'      => 'required',
-            'displayable_address'   => 'required',
-            'image_url'             => 'file',
-            'thumbnail_url'         => 'file',
-            'latitude'              => 'required',
-            'longtitude'            => 'required',
-            'num_of_bedrooms'       => 'required',
-            'num_of_bathrooms'      => 'required',
-            'price'                 => 'required',
-            'property_type'         => 'required',
-            'for_sale_rent'         => 'required'
-        ];
-
-        $propertyData = Helpers::validateForm($request, $rules);
-
-        $property->fill($propertyData);
-
-        $property->save();
+        // code here
     }
 
     /**
