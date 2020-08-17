@@ -200,7 +200,7 @@ class PropertyController extends Controller
 
         try {
             if ($property->delete()) {
-                return json_encode(['success' => 'Property successfully deleted']);
+                return route('property.index');
             } else {
                 return json_encode(['error' => 'Property failed to delete']);
             }

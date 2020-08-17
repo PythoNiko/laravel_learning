@@ -76,34 +76,12 @@
                     </tr>
                 @endif
             </table>
-            {{-- Requirements state no Auth is required here.
-                 If this was to change could easily create permissions and do simple check
-                 can('edit/add new property')....--}}
-
+        {{-- Requirements state no Auth is required here.
+             If this was to change could easily create permissions and do simple check
+             can('edit/add new property')....--}}
         </div>
         <a href="{{route('property.create')}}" class="button noMarginBottom">
             Add New Property
         </a>
     </div>
-
-{{--    <?php--}}
-{{--        // dd($response);--}}
-{{--        $i = 0;--}}
-
-{{--        while($i < 30){--}}
-{{--            var_dump($response['data'][$i]['county']);--}}
-{{--            $i ++;--}}
-{{--        }--}}
-
-{{--//        dd($response['data'][0]['description']);--}}
-{{--    ?>--}}
-
-{{--    <div>--}}
-{{--        <?php--}}
-{{--            foreach($response as $property){--}}
-{{--                dd($property);--}}
-{{--//                var_dump(isset($property['$property']) ? $property['$property'] : 0);--}}
-{{--            }--}}
-{{--        ?>--}}
-{{--    </div>--}}
 @endsection
