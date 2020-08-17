@@ -12,6 +12,7 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Preview</th>
                         <th scope="col">County</th>
                         <th scope="col">Town</th>
                         <th scope="col">Property Type</th>
@@ -27,6 +28,9 @@
                 @if ($property)
                     @foreach ($property as $properties)
                         <tr>
+                            <td>
+                                <img src="{{ $properties->thumbnail_url }}" class="css-class" alt="alt text">
+                            </td>
                             <td>
                                 {{ $properties->county }}
                             </td>
