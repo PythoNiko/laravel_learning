@@ -86,13 +86,8 @@ class PropertyController extends Controller
         }
     }
 
-    public function validateForm(Request $request, Property $property){
-
-        return view('property.index');
-
-    }
-
-    public function populatePropertiesFromAPI(){
+    public function populatePropertiesFromAPI()
+    {
         /*
          * ToDo:
          *      1. Check if uuid already exists
@@ -131,12 +126,12 @@ class PropertyController extends Controller
 
         curl_close($curl);
 
-        if($response_status['http_code']){
+        if ($response_status['http_code']) {
             $response = json_decode($response, true);
 
             $property = new Property();
 
-            foreach($response['data'] as $property_data){
+            foreach ($response['data'] as $property_data) {
                 // dd($property_data);
 
                 $property = new Property();
@@ -203,7 +198,7 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Property $property
+     * @param Request $request
      * @return false|string
      */
     public function destroy(Request $request)
