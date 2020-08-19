@@ -218,6 +218,7 @@ class PropertyController extends Controller
     /**
      * @param Property $property
      * @return mixed
+     * @throws \Exception
      */
     public function removeProperty(Property $property)
     {
