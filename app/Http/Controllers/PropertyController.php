@@ -17,10 +17,10 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $property = Property::all();
+        $properties = Property::all();
 
         return view('property.index', compact(
-            'property'
+            'properties'
         ));
     }
 
@@ -171,48 +171,60 @@ class PropertyController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param Property $property
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Property $property)
     {
-        $property = Property::where('id', '=', $id);
-
-        return view("property.edit", compact("property"));
+        return view('property.edit', compact(
+            'property'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Property $property
-     * @return void
+     * @param \Illuminate\Http\Request $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function update(Request $request, Property $property)
     {
-        // code here
+
+        $rules = [
+            'county'                => 'required',
+            'country'               => 'required',
+            'town'                  => 'required',
+            'description'           => 'required',
+            'full_details_url'      => 'required',
+            'displayable_address'   => 'required',
+            'latitude'              => 'required',
+            'longtitude'            => 'required',
+            'num_of_bedrooms'       => 'required',
+            'num_of_bathrooms'      => 'required',
+            'price'                 => 'required',
+            'property_type'         => 'required',
+            'sale_rent'             => 'required'
+        ];
+
+        $request->validate($rules);
+
+        $input = $request->all();
+
+        $property->fill($input)->save();
+
+        return redirect()->route('property.index');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param Request $request
-     * @return false|string
+     * @param Property $property
+     * @return mixed
      */
-    public function destroy(Request $request)
+    public function removeProperty(Property $property)
     {
-        $property = Property::find($request->id);
-
-        try {
-            if ($property->delete()) {
-                return route('property.index');
-            } else {
-                return json_encode(['error' => 'Property failed to delete']);
-            }
-        } catch (Throwable $e) {
-            return json_encode(['error' => $e->getMessage()]);
+        if ($property->delete()) {
+            return redirect()->route('property.index')->with('success', 'Property deleted successfully');
+        } else {
+            return redirect()->route('property.index')->with('error', 'Property failed to delete');
         }
     }
 }

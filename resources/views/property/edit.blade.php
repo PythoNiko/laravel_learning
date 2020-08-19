@@ -9,7 +9,7 @@
 
     <div class="container bg-white shadow">
         <div class="row">
-            <form method="PUT" action="{{route('property.update')}}">
+            <form method="PUT" action="{{route('property.update', ['property' => $property])}}">
                 @method('PUT')
                 @csrf
                 <div class="field">

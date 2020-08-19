@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+    @endif
+
     <h3>Properties</h3>
 
     <div class="container bg-white shadow">
@@ -25,46 +36,44 @@
                     </tr>
                 </thead>
                 {{-- ToDo: Validation and error handling --}}
-                @if ($property)
-                    @foreach ($property as $properties)
+                @if ($properties)
+                    @foreach ($properties as $property)
                         <tr>
                             <td>
-                                @if($properties->thumbnail_url)
-                                    <img src="{{ $properties->thumbnail_url }}" class="css-class" alt="property_image">
+                                @if($property->thumbnail_url)
+                                    <img src="{{ $property->thumbnail_url }}" class="css-class" alt="property_image">
                                 @else
                                     <img src="https://lh3.googleusercontent.com/proxy/tEaBkUcigm-pg7O4KnqU-nKhL4YdiFxPyfgW-aNdWaTuyK2LwAWHlUlc3Ex6X1zEx8syyZ1rftzU6uPRsBs7S3DkDtlnA16YNSlMeMJ2BJLt4E7YFmGvaA" class="css-class" alt="image_not_found">
                                 @endif
                             </td>
                             <td>
-                                {{ $properties->county }}
+                                {{ $property->county }}
                             </td>
                             <td>
-                                {{ $properties->town }}
+                                {{ $property->town }}
                             </td>
                             <td>
-                                {{ $properties->property_type }}
+                                {{ $property->property_type }}
                             </td>
                             <td>
-                                {{ ucfirst($properties->for_sale_rent) }}
+                                {{ ucfirst($property->for_sale_rent) }}
                             </td>
                             <td>
-                                {{ $properties->num_of_bedrooms }}
+                                {{ $property->num_of_bedrooms }}
                             </td>
                             <td>
-                                {{ $properties->num_of_bathrooms }}
+                                {{ $property->num_of_bathrooms }}
                             </td>
                             <td>
-                                &pound;{{ number_format($properties->price) }}
+                                &pound;{{ number_format($property->price) }}
                             </td>
                             <td>
-                                <a href="{{route('property.edit', $properties->id)}}">
+                                <a href="{{ route('property.edit', ['property' => $property]) }}">
                                     Edit
                                 </a>
                             </td>
                             <td>
-                                <a href="{{route('property.destroy', $properties->id)}}">
-                                    Delete
-                                </a>
+                                <a href="{{route('property.removeProperty', ['property' => $property])}}">Delete</a>
                             </td>
                         </tr>
                     @endforeach

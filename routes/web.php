@@ -27,3 +27,4 @@ Route::get('/php', 'PhpController@index');
 Route::resource('tasks', 'TasksController');
 Route::resource('sessions','SessionsController');
 Route::resource('property','PropertyController');
+Route::get('/property-delete', 'PropertyController@removeProperty')->name('property.removeProperty');
