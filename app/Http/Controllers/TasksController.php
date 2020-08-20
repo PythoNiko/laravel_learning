@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class TasksController extends Controller
 {
     // Calls from db, and returns data to view
-    public function index(){
+    public function index()
+    {
         $tasks = Task::all();
         $first_task = Task::all()->first()->id;
         $last_task = Task::all()->last()->id;
@@ -24,15 +25,18 @@ class TasksController extends Controller
             'first_task',
             'last_task',
             'current_url',
-            'plucked_tasks'));
+            'plucked_tasks'
+        ));
     }
 
-    public function create(){
+    public function create()
+    {
         return view("tasks.create");
     }
 
     // Stores data into db
-    public function store(){
+    public function store()
+    {
         $task = new Task();
         $task->name = request('title');
         $task->description = request('description');
@@ -44,22 +48,24 @@ class TasksController extends Controller
         // test for upload repo to new laptop switchover
     }
 
-    public function show(){
+    public function show()
+    {
         // code here
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $tasks = Task::find($id);
         return view("tasks.edit", compact("tasks"));
     }
 
-    public function update(Request $request, Property $property){
+    public function update(Request $request, Property $property)
+    {
         // code here
     }
 
-    public function destroy(){
+    public function destroy()
+    {
         // code here
     }
-
-
 }
