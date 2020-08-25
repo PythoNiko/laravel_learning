@@ -17,6 +17,11 @@ class PropertyController extends Controller
      */
     public function index()
     {
+        // temp solution: clear all data and reload from API
+        Property::getQuery()->delete();
+
+        $this->populateProperties();
+
         $properties = Property::all();
 
         return view('property.index', compact(
@@ -86,7 +91,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function populatePropertiesFromAPI()
+    public function populateProperties()
     {
         /*
          * ToDo:
