@@ -21,6 +21,7 @@ class PropertyController extends Controller
         // check if data has been loaded from API already
         $dataLoader = DataLoader::where('id', 1)->first();
 
+        // load data from API and set flag to 1
         if ($dataLoader && $dataLoader->data_loaded == 0) {
             $this->populateProperties();
             $dataLoader->data_loaded = 1;
