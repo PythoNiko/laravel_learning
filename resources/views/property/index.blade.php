@@ -18,6 +18,10 @@
 
     <h3>Properties</h3>
 
+    <p>
+        Number of properties: {{ $propertyCount }}
+    </p>
+
     <div class="container bg-white shadow">
         <div class="row">
             <table class="table table-striped">

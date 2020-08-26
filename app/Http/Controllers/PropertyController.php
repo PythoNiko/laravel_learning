@@ -31,8 +31,12 @@ class PropertyController extends Controller
         // load all properties and send to view to be rendered
         $properties = Property::all();
 
+        // count of properties
+        $propertyCount = Property::all()->count();
+
         return view('property.index', compact(
-            'properties'
+            'properties',
+            'propertyCount'
         ));
     }
 
@@ -98,25 +102,18 @@ class PropertyController extends Controller
         }
     }
 
-    public function populateProperties()
+    public function APICall($index)
     {
-        /*
-         * ToDo:
-         *      1. Get last page number from /last_page_url
-         *      - While page number < last page number
-         *      - grab data from each, mark page as read
-         *      - call API and append /next_page_url with increments to capture each page number
-         *      - when all data complete, stop.
-         */
+        // 1. http://trialapi.craig.mtcdevserver.com/
 
         $curl = curl_init();
 
-        // ToDo: - Store securely
         $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
-        $apiKey = '3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
+        $apiKey = '?api_key=3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
+        $currentPage = '&page[number]=' . $index;
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $endPoint . '?api_key=' . $apiKey,
+            CURLOPT_URL => $endPoint . $apiKey . $currentPage,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -129,40 +126,57 @@ class PropertyController extends Controller
             )
         ));
 
-        $response = curl_exec($curl);
-
-        $responseStatus = curl_getinfo($curl);
+        $apiData = [
+            'responseStatus'    => $responseStatus = curl_getinfo($curl),
+            'response'          => $response = curl_exec($curl)
+        ];
 
         curl_close($curl);
 
-        if ($responseStatus['http_code']) {
-            $response = json_decode($response, true);
+        return $apiData;
+    }
 
-            $property = new Property();
+    public function populateProperties()
+    {
+        $index = 1;
 
-            foreach ($response['data'] as $propertyData) {
-                $property = new Property();
+        $apiData = $this->APICall($index);
 
-                $property->uuid = $propertyData['uuid'];
-                $property->county = $propertyData['county'];
-                $property->country = $propertyData['country'];
-                $property->town = $propertyData['town'];
-                $property->description = $propertyData['description'];
-                $property->full_details_url = '?';
-                $property->displayable_address = $propertyData['address'];
-                $property->image_url = $propertyData['image_full'];
-                $property->thumbnail_url = $propertyData['image_thumbnail'];
-                $property->latitude = $propertyData['latitude'];
-                $property->longtitude = $propertyData['longitude'];
-                $property->num_of_bedrooms = $propertyData['num_bedrooms'];
-                $property->num_of_bathrooms = $propertyData['num_bathrooms'];
-                $property->property_type = $propertyData['property_type']['title'];
-                $property->for_sale_rent = $propertyData['type'];
+        $response = json_decode($apiData['response'], true);
+        $responseStatus = json_decode($apiData['responseStatus']['http_code'], true);
 
-                $property->save();
+        $lastPage = $response['last_page'];
+
+        $property = new Property();
+
+        while ($index <= $lastPage) {
+            $index++;
+
+            if ($responseStatus && $responseStatus != 404) {
+                foreach ($response['data'] as $propertyData) {
+                    $property = new Property();
+
+                    $property->uuid = $propertyData['uuid'];
+                    $property->county = $propertyData['county'];
+                    $property->country = $propertyData['country'];
+                    $property->town = $propertyData['town'];
+                    $property->description = $propertyData['description'];
+                    $property->full_details_url = '?';
+                    $property->displayable_address = $propertyData['address'];
+                    $property->image_url = $propertyData['image_full'];
+                    $property->thumbnail_url = $propertyData['image_thumbnail'];
+                    $property->latitude = $propertyData['latitude'];
+                    $property->longtitude = $propertyData['longitude'];
+                    $property->num_of_bedrooms = $propertyData['num_bedrooms'];
+                    $property->num_of_bathrooms = $propertyData['num_bathrooms'];
+                    $property->property_type = $propertyData['property_type']['title'];
+                    $property->for_sale_rent = $propertyData['type'];
+
+                    $property->save();
+                }
+                $this->APICall($index);
             }
         }
-
         return $property;
     }
 
