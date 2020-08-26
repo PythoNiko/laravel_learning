@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataLoader;
 use App\Helpers\Helpers;
 use App\Property;
 use Illuminate\Http\Request;
@@ -17,11 +18,16 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        // temp solution: clear all data and reload from API
-        Property::getQuery()->delete();
+        // check if data has been loaded from API already
+        $dataLoader = DataLoader::where('id', 1)->first();
 
-        $this->populateProperties();
+        if ($dataLoader && $dataLoader->data_loaded == 0) {
+            $this->populateProperties();
+            $dataLoader->data_loaded = 1;
+            $dataLoader->save();
+        }
 
+        // load all properties and send to view to be rendered
         $properties = Property::all();
 
         return view('property.index', compact(
@@ -124,35 +130,33 @@ class PropertyController extends Controller
 
         $response = curl_exec($curl);
 
-        $response_status = curl_getinfo($curl);
+        $responseStatus = curl_getinfo($curl);
 
         curl_close($curl);
 
-        if ($response_status['http_code']) {
+        if ($responseStatus['http_code']) {
             $response = json_decode($response, true);
 
             $property = new Property();
 
-            foreach ($response['data'] as $property_data) {
-                // dd($property_data);
-
+            foreach ($response['data'] as $propertyData) {
                 $property = new Property();
 
-                $property->uuid = $property_data['uuid'];
-                $property->county = $property_data['county'];
-                $property->country = $property_data['country'];
-                $property->town = $property_data['town'];
-                $property->description = $property_data['description'];
+                $property->uuid = $propertyData['uuid'];
+                $property->county = $propertyData['county'];
+                $property->country = $propertyData['country'];
+                $property->town = $propertyData['town'];
+                $property->description = $propertyData['description'];
                 $property->full_details_url = '?';
-                $property->displayable_address = $property_data['address'];
-                $property->image_url = $property_data['image_full'];
-                $property->thumbnail_url = $property_data['image_thumbnail'];
-                $property->latitude = $property_data['latitude'];
-                $property->longtitude = $property_data['longitude'];
-                $property->num_of_bedrooms = $property_data['num_bedrooms'];
-                $property->num_of_bathrooms = $property_data['num_bathrooms'];
-                $property->property_type = $property_data['property_type']['title'];
-                $property->for_sale_rent = $property_data['type'];
+                $property->displayable_address = $propertyData['address'];
+                $property->image_url = $propertyData['image_full'];
+                $property->thumbnail_url = $propertyData['image_thumbnail'];
+                $property->latitude = $propertyData['latitude'];
+                $property->longtitude = $propertyData['longitude'];
+                $property->num_of_bedrooms = $propertyData['num_bedrooms'];
+                $property->num_of_bathrooms = $propertyData['num_bathrooms'];
+                $property->property_type = $propertyData['property_type']['title'];
+                $property->for_sale_rent = $propertyData['type'];
 
                 $property->save();
             }
@@ -191,7 +195,6 @@ class PropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-
         $rules = [
             'county'                => 'required',
             'country'               => 'required',
