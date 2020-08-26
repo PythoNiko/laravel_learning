@@ -104,7 +104,7 @@ class PropertyController extends Controller
 
     public function APICall($index)
     {
-        // 1. http://trialapi.craig.mtcdevserver.com/
+        // http://trialapi.craig.mtcdevserver.com/
 
         $curl = curl_init();
 
@@ -150,12 +150,8 @@ class PropertyController extends Controller
         $property = new Property();
 
         while ($index <= $lastPage) {
-            $index++;
-
-            if ($responseStatus && $responseStatus != 404) {
+            if (!$responseStatus && $responseStatus != 404) {
                 foreach ($response['data'] as $propertyData) {
-                    $property = new Property();
-
                     $property->uuid = $propertyData['uuid'];
                     $property->county = $propertyData['county'];
                     $property->country = $propertyData['country'];
@@ -174,10 +170,10 @@ class PropertyController extends Controller
 
                     $property->save();
                 }
-                $this->APICall($index);
             }
+            $index++;
+            $this->APICall($index);
         }
-        return $property;
     }
 
     /**

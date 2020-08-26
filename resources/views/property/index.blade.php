@@ -21,6 +21,11 @@
     <p>
         Number of properties: {{ $propertyCount }}
     </p>
+    <p>
+        <a href="{{route('property.create')}}" class="button noMarginBottom">
+            Add New Property
+        </a>
+    </p>
 
     <div class="container bg-white shadow">
         <div class="row">
