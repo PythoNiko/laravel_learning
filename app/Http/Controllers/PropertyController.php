@@ -102,20 +102,9 @@ class PropertyController extends Controller
         }
     }
 
-    public function APICall($index)
-    {
-        // http://trialapi.craig.mtcdevserver.com/
-
-
-
-        return $apiData;
-    }
-
     public function populateProperties()
     {
         $index = 1;
-
-        // $apiData = $this->APICall($index);
 
         $curl = curl_init();
 
@@ -174,7 +163,6 @@ class PropertyController extends Controller
                 }
             }
             $index++;
-            // $this->APICall($index);
         }
     }
 
