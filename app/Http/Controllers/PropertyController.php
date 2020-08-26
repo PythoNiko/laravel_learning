@@ -106,6 +106,17 @@ class PropertyController extends Controller
     {
         // http://trialapi.craig.mtcdevserver.com/
 
+
+
+        return $apiData;
+    }
+
+    public function populateProperties()
+    {
+        $index = 1;
+
+        // $apiData = $this->APICall($index);
+
         $curl = curl_init();
 
         $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
@@ -132,15 +143,6 @@ class PropertyController extends Controller
         ];
 
         curl_close($curl);
-
-        return $apiData;
-    }
-
-    public function populateProperties()
-    {
-        $index = 1;
-
-        $apiData = $this->APICall($index);
 
         $response = json_decode($apiData['response'], true);
         $responseStatus = json_decode($apiData['responseStatus']['http_code'], true);
@@ -172,7 +174,7 @@ class PropertyController extends Controller
                 }
             }
             $index++;
-            $this->APICall($index);
+            // $this->APICall($index);
         }
     }
 
