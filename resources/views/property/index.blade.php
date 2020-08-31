@@ -77,9 +77,7 @@
                                 &pound;{{ number_format($property->price) }}
                             </td>
                             <td>
-                                <a href="{{ route('property.edit', ['property' => $property]) }}">
-                                    Edit
-                                </a>
+                                <a href="{{ route('property.edit', ['property' => $property]) }}">Edit</a>
                             </td>
                             <td>
                                 <a href="{{route('property.removeProperty', ['property' => $property])}}">Delete</a>
