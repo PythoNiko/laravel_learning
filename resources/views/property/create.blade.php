@@ -105,14 +105,26 @@
                         <label class="label" for="num_of_bedrooms">Number of Bedrooms</label>
 
                         <div class="form-group">
-                            <input type="text" class="input form-control" name="num_of_bedrooms" value="{{old('num_of_bedrooms')}}">
+                            <select class="input form-control" name="num_of_bedrooms" value="{{old('num_of_bedrooms')}}">
+                                <option value="">Num of Bedrooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="label" for="num_of_bathrooms">Number of Bathrooms</label>
 
                         <div class="form-group">
-                            <input type="text" class="input form-control" name="num_of_bathrooms" value="{{old('num_of_bathrooms')}}">
+                            <select type="text" class="input form-control" name="num_of_bathrooms" value="{{old('num_of_bathrooms')}}">
+                                <option value="">Num of Bathrooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
