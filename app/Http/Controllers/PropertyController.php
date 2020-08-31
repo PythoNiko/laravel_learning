@@ -104,12 +104,20 @@ class PropertyController extends Controller
 
     public function populateProperties()
     {
+        /*
+         * ToDo:
+         *      - Code below duplicated when using cURL
+         *      - Create a dedicated function wic passes in various params for each call.
+         */
+
+        // initial curl call to get last_page info from API
         $curl = curl_init();
 
+        // cURL params
         $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
         $apiKey = '?api_key=3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
 
-        curl_setopt_array($curl, array(
+        curl_setopt_array($curl, [
             CURLOPT_URL => $endPoint . $apiKey,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -118,21 +126,26 @@ class PropertyController extends Controller
             CURLOPT_POST => 1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_POSTFIELDS => "",
-            CURLOPT_HTTPHEADER => array(
+            CURLOPT_HTTPHEADER => [
                 "Content-Type: application/json"
-            )
-        ));
+            ]
+        ]);
 
+        // execute cURL call
         $initialResponse = curl_exec($curl);
 
+        // close instance
         curl_close($curl);
 
+        // decode the response and grab the last_page value
         $data = json_decode($initialResponse, true);
         $lastPage = $data['last_page'];
 
+        // set index to 1 and append to a new param which can be used in second cURL call to start grabbing data from each page
         $index = 1;
         $currentPage = '&page[number]=' . $index;
 
+        // while the index is less than the last page, new cURL call and use page index
         while ($index <= $lastPage) {
             $curl2 = curl_init();
 
@@ -153,12 +166,14 @@ class PropertyController extends Controller
             $responseStatus = curl_getinfo($curl2);
             $dataResponse = curl_exec($curl2);
 
+            // close new instance(s) of cURL
             curl_close($curl2);
 
-            $data2 = json_decode($dataResponse, true);
+            $propertiesData = json_decode($dataResponse, true);
 
-            if ($responseStatus != 404 && !empty($data2['data'])) {
-                foreach ($data2['data'] as $propertyData) {
+            if ($responseStatus != 404 && !empty($propertiesData['data'])) {
+                foreach ($propertiesData['data'] as $propertyData) {
+                    // instantiate new Property object for each loop
                     $property = new Property();
 
                     $property->uuid = $propertyData['uuid'];
@@ -174,14 +189,17 @@ class PropertyController extends Controller
                     $property->longtitude = $propertyData['longitude'];
                     $property->num_of_bedrooms = $propertyData['num_bedrooms'];
                     $property->num_of_bathrooms = $propertyData['num_bathrooms'];
+                    $property->price = $propertyData['price'];
                     $property->property_type = $propertyData['property_type']['title'];
                     $property->for_sale_rent = $propertyData['type'];
 
+                    // error handling if data does not save to new Property object
                     if (!$property->save()) {
                         trigger_error("Error! Property did not save successfully.");
                     }
                 }
             }
+            // increment index for page loop
             $index++;
         }
     }
