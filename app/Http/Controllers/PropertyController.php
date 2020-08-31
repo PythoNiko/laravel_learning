@@ -104,16 +104,13 @@ class PropertyController extends Controller
 
     public function populateProperties()
     {
-        $index = 1;
-
         $curl = curl_init();
 
         $endPoint = 'http://trialapi.craig.mtcdevserver.com/api/properties';
         $apiKey = '?api_key=3NLTTNlXsi6rBWl7nYGluOdkl2htFHug';
-        $currentPage = '&page[number]=' . $index;
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $endPoint . $apiKey . $currentPage,
+            CURLOPT_URL => $endPoint . $apiKey,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -126,23 +123,44 @@ class PropertyController extends Controller
             )
         ));
 
-        $apiData = [
-            'responseStatus'    => $responseStatus = curl_getinfo($curl),
-            'response'          => $response = curl_exec($curl)
-        ];
+        $initialResponse = curl_exec($curl);
 
         curl_close($curl);
 
-        $response = json_decode($apiData['response'], true);
-        $responseStatus = json_decode($apiData['responseStatus']['http_code'], true);
+        $data = json_decode($initialResponse, true);
+        $lastPage = $data['last_page'];
 
-        $lastPage = $response['last_page'];
-
-        $property = new Property();
+        $index = 1;
+        $currentPage = '&page[number]=' . $index;
 
         while ($index <= $lastPage) {
-            if (!$responseStatus && $responseStatus != 404) {
-                foreach ($response['data'] as $propertyData) {
+            $curl2 = curl_init();
+
+            curl_setopt_array($curl2, [
+                CURLOPT_URL => $endPoint . $apiKey . $currentPage,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_POST => 1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_POSTFIELDS => "",
+                CURLOPT_HTTPHEADER => [
+                    "Content-Type: application/json"
+                ]
+            ]);
+
+            $responseStatus = curl_getinfo($curl2);
+            $dataResponse = curl_exec($curl2);
+
+            curl_close($curl2);
+
+            $data2 = json_decode($dataResponse, true);
+
+            if ($responseStatus != 404 && !empty($data2['data'])) {
+                foreach ($data2['data'] as $propertyData) {
+                    $property = new Property();
+
                     $property->uuid = $propertyData['uuid'];
                     $property->county = $propertyData['county'];
                     $property->country = $propertyData['country'];
@@ -159,7 +177,9 @@ class PropertyController extends Controller
                     $property->property_type = $propertyData['property_type']['title'];
                     $property->for_sale_rent = $propertyData['type'];
 
-                    $property->save();
+                    if (!$property->save()) {
+                        trigger_error("Error! Property did not save successfully.");
+                    }
                 }
             }
             $index++;
