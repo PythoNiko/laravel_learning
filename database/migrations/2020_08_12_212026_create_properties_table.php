@@ -33,6 +33,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_type');
             $table->string('for_sale_rent');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
