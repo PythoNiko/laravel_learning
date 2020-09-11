@@ -231,7 +231,7 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Property $property)
     {
