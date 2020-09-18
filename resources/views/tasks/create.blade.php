@@ -6,20 +6,38 @@
 
 @section('content')
 
-    <form method="POST" action="{{route('tasks.store')}}">
-        {{ csrf_field() }}
+    <div class="container bg-light shadow">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="{{route('tasks.store')}}">
+                    {{ csrf_field() }}
 
-        <div>
-            <input type="text" name="title" placeholder="Task Name">
-        </div>
+                    <h2>
+                        Add new task
+                    </h2>
 
-        <div>
-            <textarea name="description" placeholder="Project Description"></textarea>
-        </div>
+                    <div class="form-group">
+                        <label class="label" for="county">Task Name</label>
 
-        <div>
-            <button type="submit">Create New Task</button>
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Task Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="county">Description</label>
+
+                        <div class="form-group">
+                            <textarea name="description" placeholder="Project Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit">Create New Task</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 
 @endsection

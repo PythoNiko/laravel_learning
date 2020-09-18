@@ -151,9 +151,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="form-group">
-                            <button type="submit" class="button is-link">Add Property</button>
-                        </div>
+                        <button type="submit" class="button is-link">Add Property</button>
                     </div>
                 </form>
             </div>

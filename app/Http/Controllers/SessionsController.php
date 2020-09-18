@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
-class SessionsController extends Controller {
-
-    public function index(Request $request){
+class SessionsController extends Controller
+{
+    public function index(Request $request)
+    {
 
         // Add data to the session put(key, val)
         session()->put('name', 'Niko');
@@ -22,7 +22,7 @@ class SessionsController extends Controller {
         $all = session()->all(); // Laravel Helpers
 
         // random check and adding session vals to variables
-        if($request->session()->has('name') && $request->session()->has('works')){
+        if ($request->session()->has('name') && $request->session()->has('works')) {
             $user_name = $request->session()->get('name');
             $user_works = $request->session()->get('works');
             $age = Session::get('age');
