@@ -18,6 +18,9 @@
             <li class="nav-item {{Request::is('property*') ? 'active' : null}}">
                 <a class="nav-link" href="{{route('property.index')}}">Tech Test</a>
             </li>
+            <li class="nav-item {{Request::is('learning*') ? 'active' : null}}">
+                <a class="nav-link" href="{{route('learning.index')}}">Learning</a>
+            </li>
         </ul>
     </div>
 </nav>
