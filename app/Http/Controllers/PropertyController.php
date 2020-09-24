@@ -255,9 +255,11 @@ class PropertyController extends Controller
 
         $input = $request->all();
 
-        $property->fill($input)->save();
-
-        return redirect()->route('property.index');
+        if ($property->fill($input)->save()) {
+            return redirect()->route('property.index')->with('success', 'Property updated successfully');
+        } else {
+            return redirect()->route('property.edit')->with('error', 'Property failed to update');
+        }
     }
 
     /**

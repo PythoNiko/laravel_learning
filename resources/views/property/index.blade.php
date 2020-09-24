@@ -22,9 +22,8 @@
 
                 <h1>Properties</h1>
 
-                <p>
-                    Number of properties: {{ $propertyCount }}
-                </p>
+                <p>Number of properties: {{ $propertyCount }}</p>
+
                 <p>
                     <a href="{{route('property.create')}}" class="button noMarginBottom">
                         Add New Property
