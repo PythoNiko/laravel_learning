@@ -240,14 +240,13 @@ class PropertyController extends Controller
             'country'               => 'required',
             'town'                  => 'required',
             'description'           => 'required',
-            'full_details_url'      => 'required',
-            'displayable_address'   => 'required',
+            'displayableAddress'   => 'required',
             'latitude'              => 'required',
             'longtitude'            => 'required',
             'num_of_bedrooms'       => 'required',
             'num_of_bathrooms'      => 'required',
             'price'                 => 'required',
-            'property_type'         => 'required',
+            'propertyType'         => 'required',
             'sale_rent'             => 'required'
         ];
 
