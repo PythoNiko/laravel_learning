@@ -30,3 +30,5 @@ Auth::routes();
 
  Route::resource('property', 'PropertyController');
  Route::get('/property-delete/{property}', 'PropertyController@removeProperty')->name('property.removeProperty');
+
+ Route::resource('techtest', 'TechTestController');
