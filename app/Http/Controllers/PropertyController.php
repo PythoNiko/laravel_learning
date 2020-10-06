@@ -209,11 +209,14 @@ class PropertyController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Property  $property
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show(Property $property)
     {
-        //
+
+        return view('property.show', compact(
+            'property'
+        ));
     }
 
     /**

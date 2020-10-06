@@ -45,6 +45,7 @@
                                     <th scope="col">Price</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             {{-- ToDo: Validation and error handling --}}
@@ -84,6 +85,9 @@
                                         </td>
                                         <td>
                                             <a href="{{route('property.removeProperty', ['property' => $property])}}">Delete</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('property.show', ['property' => $property])}}">Show</a>
                                         </td>
                                     </tr>
                                 @endforeach
