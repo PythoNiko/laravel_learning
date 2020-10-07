@@ -33,7 +33,8 @@ class TechTestController extends Controller
             $this->updateTable();
         }
 
-        $leagueTable = LeagueTable::all();
+        // temp way of getting 20 teams til more efficient solution found
+        $leagueTable = LeagueTable::where('id', '<=', 20)->limit(20)->get();
 
         return view('techtest.index', compact(
             'leagueTable'
