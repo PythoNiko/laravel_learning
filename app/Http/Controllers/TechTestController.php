@@ -27,19 +27,15 @@ class TechTestController extends Controller
         if ($lastLeagueUpdate && $lastLeagueUpdate < Carbon::now('UTC')) {
             $this->updateTable();
 
-            $test = "Niko";
-
             $lastLeagueUpdate->last_update = Carbon::now('UTC');
             $lastLeagueUpdate->save();
         } else {
             $this->updateTable();
-            $test = "Needs to be resolved.";
         }
 
         $leagueTable = LeagueTable::all();
 
         return view('techtest.index', compact(
-            'test',
             'leagueTable'
         ));
     }
@@ -49,8 +45,14 @@ class TechTestController extends Controller
         // initial curl call to get last_page info from API
         $curl = curl_init();
 
+        $key = 'key=GMWU5FsK2BnvIsJ4';
+        $secret = '&secret=dYysBg19XhtoEIqkvmeA2Hk4iIz1aj5o';
+        $league = '&league=25';
+        $season = '&season=2';
+
         // cURL params
-        $endPoint = 'http://livescore-api.com/api-client/leagues/table.json?key=GMWU5FsK2BnvIsJ4&secret=dYysBg19XhtoEIqkvmeA2Hk4iIz1aj5o&league=25&season=2';
+        $endPoint = "http://livescore-api.com/api-client/leagues/table.json?" . $key . $secret . $league . $season;
+//  'http://livescore-api.com/api-client/leagues/table.json?key=GMWU5FsK2BnvIsJ4&secret=dYysBg19XhtoEIqkvmeA2Hk4iIz1aj5o&league=25&season=2';
 
         curl_setopt_array($curl, [
             CURLOPT_URL => $endPoint,
