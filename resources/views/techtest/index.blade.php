@@ -27,7 +27,7 @@
                         <table class="table table-striped">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Rank</th>
+                                <th scope="col">Position</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Played</th>
                                 <th scope="col">Won</th>
@@ -77,6 +77,7 @@
                         </table>
                     </div>
                     <div class="col-md-6">
+                        <b>Next round of fixtures:</b><br>
                         Liverpool vs Man City<br>
                         Leicester City vs Arsenal<br>
                         West Ham vs Spurs<br>
@@ -87,12 +88,20 @@
                         Everton vs Brighton & Hove Albion<br>
                         Norwich City vs Aston Villa<br>
                         Newcastle United vs Watford<br><br>
-                        Hard coded for now. Fixtures API to populate this section. Improvements to this section can include:
+                        <b>Predicitons based on this weeks fixtures:</b>
+                        <ul>
+                            <li>Leicester Win</li>
+                            <li>West Ham - Spurs BTTS</li>
+                            <li>Chelsea -1 Handicap</li>
+                            <li>Everton - Brighton & Hove Albion BTTS</li>
+                        </ul><br>
+                        <i><b>Notes:</b><br>
+                            Hard coded for now. Fixtures API to populate this section. Improvements to this section can include:
                         <ul>
                             <li>Further Column to show form (last 6 games)</li>
                             <li>CSS/Highlighting on teams to watch out for</li>
                             <li>Dynamic Highlighting on table to show which two teams play next</li>
-                        </ul>
+                        </ul></i>
                     </div>
                 </div>
             </div>
