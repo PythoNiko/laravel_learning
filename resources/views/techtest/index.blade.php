@@ -18,12 +18,12 @@
 
     <div class="container bg-white shadow">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-32">
 
                 <h1>Predictor</h1>
 
-                <div class="container bg-white shadow">
-                    <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
                         <table class="table table-striped">
                             <thead class="thead-dark">
                             <tr>
@@ -75,7 +75,11 @@
                                 </tr>
                             @endif
                         </table>
-
+                    </div>
+                    <div class="col-md-6">
+                        Fixture Information to go here. Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
