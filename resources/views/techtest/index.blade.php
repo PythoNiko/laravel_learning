@@ -77,7 +77,22 @@
                         </table>
                     </div>
                     <div class="col-md-6">
-                        Fixture Information to go here. Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.Fixture Information to go here.
+                        Liverpool vs Man City<br>
+                        Leicester City vs Arsenal<br>
+                        West Ham vs Spurs<br>
+                        Chelsea vs AFC Bournemouth<br>
+                        Crystal Palace vs Manchester United<br>
+                        Burnley vs Sheffield United<br>
+                        Wolverhampton Wanderers vs Southampton<br>
+                        Everton vs Brighton & Hove Albion<br>
+                        Norwich City vs Aston Villa<br>
+                        Newcastle United vs Watford<br><br>
+                        Hard coded for now. Fixtures API to populate this section. Improvements to this section can include:
+                        <ul>
+                            <li>Further Column to show form (last 6 games)</li>
+                            <li>CSS/Highlighting on teams to watch out for</li>
+                            <li>Dynamic Highlighting on table to show which two teams play next</li>
+                        </ul>
                     </div>
                 </div>
             </div>
