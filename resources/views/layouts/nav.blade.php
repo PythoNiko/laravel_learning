@@ -22,7 +22,7 @@
                 <a class="nav-link" href="{{route('learning.index')}}">Learning</a>
             </li>
             <li class="nav-item {{Request::is('techtest*') ? 'active' : null}}">
-                <a class="nav-link" href="{{route('techtest.index')}}">TechTest</a>
+                <a class="nav-link" href="{{route('techtest.index')}}">Predictor</a>
             </li>
         </ul>
     </div>

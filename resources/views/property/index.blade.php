@@ -32,7 +32,7 @@
 
                 <div class="container bg-white shadow">
                     <div class="row">
-                        <table class="table table-striped">
+                        <table class="table table-strped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Preview</th>
