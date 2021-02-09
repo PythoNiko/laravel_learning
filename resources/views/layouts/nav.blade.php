@@ -24,6 +24,9 @@
             <li class="nav-item {{Request::is('techtest*') ? 'active' : null}}">
                 <a class="nav-link" href="{{route('techtest.index')}}">Predictor</a>
             </li>
+            <li class="nav-item {{Request::is('qanw*') ? 'active' : null}}">
+                <a class="nav-link" href="{{route('qanw.index')}}">QANW</a>
+            </li>
         </ul>
     </div>
 </nav>
